@@ -20,8 +20,10 @@ export default async function handler(
   const hostname = req.headers.host;
   console.log(`${new Date().getTime().toFixed(0).substr(-4)}: `, { hostname });
 
-  sleep(5).then(async () => {
-    const data = await fetch(hostname + "/api/received", { method: "GET" });
+  sleep(6000).then(async () => {
+    const data = await fetch("http://" + hostname + "/api/received", {
+      method: "GET",
+    });
     const d = await data.json();
     console.log(`${new Date().getTime().toFixed(0).substr(-4)}: `, { d });
   });
