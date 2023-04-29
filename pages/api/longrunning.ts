@@ -17,6 +17,14 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<object>
 ) {
-  sleep(6).then(console.log);
+  const hostname = req.headers.host;
+  console.log(`${new Date().getTime().toFixed(0).substr(-4)}: `, { hostname });
+
+  sleep(5).then(async () => {
+    const data = await fetch(hostname + "/api/received", { method: "GET" });
+    const d = await data.json();
+    console.log(`${new Date().getTime().toFixed(0).substr(-4)}: `, { d });
+  });
+
   res.json({ success: true, message: "Done" });
 }
