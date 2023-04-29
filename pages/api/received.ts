@@ -5,5 +5,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<object>
 ) {
-  res.json({ success: true, message: "RECEIVEDDDD" });
+  const obj = { success: true, message: "RECEIVEDDDD" };
+  console.log(`${new Date().getTime().toFixed(0).substr(-4)}: `, { obj });
+  res.json(obj);
 }

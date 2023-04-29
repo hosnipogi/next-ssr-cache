@@ -21,7 +21,7 @@ export default async function handler(
   console.log(`${new Date().getTime().toFixed(0).substr(-4)}: `, { hostname });
 
   sleep(6000).then(async () => {
-    const data = await fetch("http://" + hostname + "/api/received", {
+    const data = await fetch("https://" + hostname + "/api/received", {
       method: "GET",
     });
     const d = await data.json();
